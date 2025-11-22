@@ -1,0 +1,9 @@
+event_ticket_system/
+│ app.py
+│
+├─ templates/
+│    index.html
+│    verify.html
+│
+└─ static/
+     style.css
