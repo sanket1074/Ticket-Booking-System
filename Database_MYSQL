@@ -1,0 +1,25 @@
+CREATE DATABASE event_tickets;
+USE event_tickets;
+
+-- Events table
+CREATE TABLE events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    event_date DATETIME NOT NULL,
+    venue VARCHAR(150),
+    total_seats INT NOT NULL,
+    seats_booked INT NOT NULL DEFAULT 0
+);
+
+-- Tickets table
+CREATE TABLE tickets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_code VARCHAR(50) NOT NULL UNIQUE,
+    user_name VARCHAR(100) NOT NULL,
+    user_email VARCHAR(100) NOT NULL,
+    event_id INT NOT NULL,
+    booking_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('BOOKED', 'USED', 'CANCELLED') DEFAULT 'BOOKED',
+    FOREIGN KEY (event_id) REFERENCES events(id)
+);
