@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Event Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Online Event Ticket Booking</h1>
+
+<div class="container">
+    {% if message %}
+        <div class="message">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <h2>Book a Ticket</h2>
+    <form action="/book_ticket" method="post" class="form-box">
+        <label>Your Name</label>
+        <input type="text" name="name" required>
+
+        <label>Your Email</label>
+        <input type="email" name="email" required>
+
+        <label>Select Event</label>
+        <select name="event_id" required>
+            {% for e in events %}
+                <option value="{{ e.id }}">
+                    {{ e.name }} ({{ e.event_date }}) - {{ e.venue }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Book Ticket</button>
+    </form>
+
+    <div class="link-box">
+        <a href="/verify">Go to Ticket Verification →</a>
+    </div>
+</div>
+
+</body>
+</html>

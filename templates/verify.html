@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Ticket Verification</h1>
+
+<div class="container">
+    <form action="/verify_ticket" method="post" class="form-box">
+        <label>Enter Ticket Code</label>
+        <input type="text" name="ticket_code" required>
+
+        <button type="submit">Verify Ticket</button>
+    </form>
+
+    {% if result %}
+        <div class="message">
+            {{ result }}
+        </div>
+    {% endif %}
+
+    <div class="link-box">
+        <a href="/">← Back to Booking Page</a>
+    </div>
+</div>
+
+</body>
+</html>
