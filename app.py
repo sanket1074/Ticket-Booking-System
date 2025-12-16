@@ -10,7 +10,7 @@ def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",            # change if your MySQL user is different
-        password="Sanket#8691",  # change this to your MySQL password
+        password="ADD_YOUR_PASSWORD",  # change this to your MySQL password
         database="event_tickets"
     )
 
